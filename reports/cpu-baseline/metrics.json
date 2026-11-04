@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "indus_version": "0.1.0",
+  "experiment": "CPU extractive baselines \u2014 no fine-tuned model",
+  "dataset_sha256": "ddc7e0fd319b5d459a684f44259830fdc83536de72bc8048e6b78d9a558a4b03",
+  "record_count": 100,
+  "sentence_count": 2,
+  "python": "3.12.14",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "metric": "macro token ROUGE-L F1; lowercase Unicode words; no stemming; scale 0\u20131",
+  "limitations": "Synthetic template-based data; repeated topics and references; not evidence of LLM quality or generalization. Timing excludes loading and metrics; one pass, no warmup.",
+  "methods": {
+    "lead": {
+      "rouge_l_f1": 0.318917,
+      "mean_latency_ms": 0.008012,
+      "p95_latency_ms": 0.008583
+    },
+    "frequency": {
+      "rouge_l_f1": 0.276204,
+      "mean_latency_ms": 0.058101,
+      "p95_latency_ms": 0.068208
+    }
+  }
+}

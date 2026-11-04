@@ -1,0 +1,21 @@
+defaults:
+  - model: mistral_7b
+  - training: qlora_r16
+  - data: eng_summarization
+  - _self_
+
+seed: 42
+
+output_dir: ./outputs
+checkpoint_dir: ./checkpoints
+
+mlflow:
+  tracking_uri: ${oc.env:MLFLOW_TRACKING_URI,./mlruns}
+  experiment_name: indus-qlora
+  run_name: null
+
+logging:
+  level: INFO
+  file: null
+
+device: auto
