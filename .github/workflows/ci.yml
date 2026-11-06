@@ -1,0 +1,39 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  cpu:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install CPU-only PyTorch
+        run: python -m pip install 'torch>=2.2,<3' --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install -e '.[dev]' 'transformers>=4.40,<5' 'peft>=0.10,<1'
+      - run: ruff check src tests scripts
+      - run: black --check src tests scripts
+      - run: pytest --cov=indus --cov-report=term-missing --junitxml=test-results.xml
+      - run: python -m indus validate data/sample/eng_summarization_sample.jsonl
+      - run: python -m indus demo
+      - run: python -m build
+      - name: Verify installed wheel outside source checkout
+        run: |
+          python -m venv /tmp/indus-wheel
+          /tmp/indus-wheel/bin/pip install --no-deps dist/*.whl
+          cd /tmp
+          /tmp/indus-wheel/bin/indus demo --data "$GITHUB_WORKSPACE/data/sample/eng_summarization_sample.jsonl" --output /tmp/indus-demo
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cpu-report-${{ matrix.python-version }}
+          path: |
+            outputs/demo/
+            test-results.xml
