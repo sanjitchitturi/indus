@@ -1,0 +1,19 @@
+name: eng_summarization
+
+train_path: data/sample/eng_summarization_sample.jsonl
+val_path: null
+test_path: null
+
+source_column: source_text
+target_column: target_summary
+id_column: document_id
+
+val_fraction: 0.1
+test_fraction: 0.1
+
+max_source_length: 768
+max_target_length: 256
+prompt_template: "Summarize the following engineering document:\n\n{source}\n\nSummary:"
+
+num_workers: 4
+pin_memory: true

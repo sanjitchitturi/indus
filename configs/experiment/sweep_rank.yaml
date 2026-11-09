@@ -1,0 +1,10 @@
+sweep_name: rank_sweep
+parameters:
+  - training: qlora_r8
+  - training: qlora_r16
+  - training: qlora_r32
+  - training: qlora_r16
+    training.lora.r: 64
+    training.lora.lora_alpha: 128
+    training.batch_size: 2
+    training.gradient_accumulation_steps: 8

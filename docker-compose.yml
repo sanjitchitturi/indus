@@ -1,0 +1,47 @@
+services:
+  training:
+    build: .
+    gpus: all
+    environment:
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    volumes:
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+    command: ["scripts/train.py"]
+    depends_on:
+      mlflow:
+        condition: service_healthy
+
+  evaluation:
+    build: .
+    gpus: all
+    environment:
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    volumes:
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+    command: ["scripts/evaluate.py"]
+    depends_on:
+      mlflow:
+        condition: service_healthy
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.22.0
+    ports:
+      - "127.0.0.1:5000:5000"
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+      - ./mlartifacts:/mlflow/artifacts
+    command: >
+      mlflow server
+        --host 0.0.0.0
+        --port 5000
+        --backend-store-uri sqlite:////mlflow/mlruns/mlflow.db
+        --serve-artifacts
+        --artifacts-destination /mlflow/artifacts
+        --default-artifact-root mlflow-artifacts:/
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/health')"]
+      interval: 5s
+      timeout: 5s
+      retries: 20

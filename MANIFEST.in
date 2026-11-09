@@ -1,0 +1,6 @@
+include README.md LICENSE CONTRIBUTING.md Makefile Dockerfile docker-compose.yml
+recursive-include configs *.yaml
+recursive-include scripts *.py
+recursive-include data/sample *.jsonl
+recursive-include docs *.md *.svg
+recursive-include reports *.md *.json *.jsonl *.html

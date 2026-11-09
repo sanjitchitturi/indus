@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="510" viewBox="0 0 1200 510" role="img" aria-labelledby="title desc">
+<title id="title">Indus — measurable engineering summarization</title><desc id="desc">Documents flow through configurable QLoRA training and evaluation into inspectable evidence. A separate CPU baseline supports reproducible review.</desc>
+<rect width="1200" height="510" rx="18" fill="#101b1a"/>
+<g font-family="Arial,Helvetica,sans-serif">
+<text x="60" y="67" fill="#c0e69a" font-size="18" letter-spacing="7">INDUS</text>
+<text x="1140" y="64" text-anchor="end" fill="#a8bdb0" font-size="12" letter-spacing="2">REPRODUCIBLE ML EXPERIMENTS</text>
+<path d="M60 92H1140" stroke="#344642"/>
+<text x="60" y="162" fill="#edf2e8" font-size="46">Engineering documents.</text>
+<text x="60" y="217" fill="#edf2e8" font-size="46">Measurable summaries.</text>
+<text x="62" y="257" fill="#a8bdb0" font-size="18">QLoRA adaptation · experiment tracking · inspectable baseline evidence</text>
+<g fill="#172724" stroke="#344642"><rect x="60" y="309" width="240" height="115" rx="10"/><rect x="340" y="309" width="240" height="115" rx="10"/><rect x="620" y="309" width="240" height="115" rx="10"/><rect x="900" y="309" width="240" height="115" rx="10"/></g>
+<g fill="#c0e69a" font-size="12" letter-spacing="2"><text x="82" y="338">01 / DOCUMENTS</text><text x="362" y="338">02 / ADAPT</text><text x="642" y="338">03 / EVALUATE</text><text x="922" y="338">04 / INSPECT</text></g>
+<g fill="#edf2e8" font-size="21"><text x="82" y="374">Validate &amp; split</text><text x="362" y="374">4-bit + LoRA</text><text x="642" y="374">Quality &amp; cost</text><text x="922" y="374">Evidence per record</text></g>
+<g fill="#a8bdb0" font-size="13"><text x="82" y="400">JSONL / CSV · seeded splits</text><text x="362" y="400">Target-masked training</text><text x="642" y="400">ROUGE · BLEU · BERTScore</text><text x="922" y="400">MLflow · HTML · JSON</text></g>
+<g stroke="#c0e69a" fill="none"><path d="M309 365h22m-6-5 6 5-6 5M589 365h22m-6-5 6 5-6 5M869 365h22m-6-5 6 5-6 5"/></g>
+<text x="60" y="470" fill="#a8bdb0" font-size="13">START WITHOUT A GPU</text><text x="270" y="470" fill="#c0e69a" font-size="16" font-family="monospace">python -m indus demo</text>
+</g></svg>
